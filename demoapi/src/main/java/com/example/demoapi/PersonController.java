@@ -53,4 +53,10 @@ public class PersonController {
     public ResponseEntity<Optional<Person>> change(){
         return new ResponseEntity<Optional<Person>>(personService.change(), HttpStatus.OK);
     }
+
+    @GetMapping(path = "/add")
+    public void add(){
+        personService.addPerson();
+        return;
+    }
 }

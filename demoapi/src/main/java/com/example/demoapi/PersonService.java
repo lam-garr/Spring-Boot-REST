@@ -84,4 +84,10 @@ public class PersonService {
 
         return personRepository.findByUsername("newusername420");
     }
+
+    //add new document to db
+    public void addPerson(){
+        personRepository.save(new Person("newuser420", "password"));
+        return;
+    }
 }
