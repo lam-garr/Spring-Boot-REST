@@ -24,8 +24,14 @@ public class PersonController {
     }
 
     @GetMapping(path = "/one")
-    public ResponseEntity<Optional<Person>> getByUsername(){
-        return new ResponseEntity<Optional<Person>>(personService.getByUsername(), HttpStatus.OK);
+    public ResponseEntity<Person> getByUsername(){
+        return new ResponseEntity<Person>(personService.getByUsername(), HttpStatus.OK);
+    }
+
+    //get single property from object
+    @GetMapping(path = "/prop")
+    public String getProperty(){
+        return personService.getProperty();
     }
 
     @GetMapping(path = "/stuff")

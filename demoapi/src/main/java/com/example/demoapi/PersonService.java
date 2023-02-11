@@ -26,8 +26,20 @@ public class PersonService {
         return personRepository.findAll();
     }
 
-    public Optional<Person> getByUsername(){
-        return personRepository.findByUsername("newuser2");
+    public Person getByUsername(){
+        final Query query = new Query();
+        query.addCriteria(Criteria.where("username").is("newuser2"));
+        final Person person1 = mongoTemplate.findOne(query, Person.class);
+        return person1;
+    }
+
+    //get single property from object
+    public String getProperty(){
+        final Query query = new Query();
+        query.addCriteria(Criteria.where("username").is("newuser2"));
+        final Person person1 = mongoTemplate.findOne(query, Person.class);
+
+        return person1.getUsername();
     }
 
     //adds new object in array property called 'myList'
