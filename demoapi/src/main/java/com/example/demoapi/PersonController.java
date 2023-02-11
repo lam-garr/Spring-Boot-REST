@@ -5,6 +5,7 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -30,5 +31,10 @@ public class PersonController {
     @GetMapping(path = "/stuff")
     public ResponseEntity<String> doStuff(){
         return new ResponseEntity<String>(personService.doStuff(), HttpStatus.OK);
+    }
+
+    @GetMapping(path = "/delte")
+    public ResponseEntity<Optional<Person>> deleteStuff(){
+        return new ResponseEntity<Optional<Person>>(personService.deleteStuff(), HttpStatus.OK);
     }
 }

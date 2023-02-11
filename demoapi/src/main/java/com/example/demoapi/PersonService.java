@@ -6,8 +6,11 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
+import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.data.mongodb.core.query.Update;
 import org.springframework.stereotype.Service;
+
+import com.mongodb.BasicDBObject;
 
 @Service
 public class PersonService {
@@ -33,5 +36,15 @@ public class PersonService {
             .first();
 
         return "OK";
+    }
+
+    public Optional<Person> deleteStuff(){
+        mongoTemplate.updateFirst(
+            Query.query(Criteria.where("username").is("newuser2")),
+            new Update().pull("myList", new BasicDBObject("username", "bitch1")),
+            Person.class
+        );
+
+        return personRepository.findByUsername("newuser2");
     }
 }
