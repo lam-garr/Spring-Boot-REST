@@ -30,6 +30,7 @@ public class PersonService {
         return personRepository.findByUsername("newuser2");
     }
 
+    //adds new object in array property called 'myList'
     public String doStuff(){
         mongoTemplate.update(Person.class)
             .matching(Criteria.where("username").is("newuser2"))
@@ -39,6 +40,7 @@ public class PersonService {
         return "OK";
     }
 
+    //delete object in array property called 'myList'
     public Optional<Person> deleteStuff(){
         mongoTemplate.updateFirst(
             Query.query(Criteria.where("username").is("newuser2")),
@@ -49,6 +51,7 @@ public class PersonService {
         return personRepository.findByUsername("newuser2");
     }
 
+    //edit object in array property called 'myList'
     public Optional<Person> editStuff(){
 
         Query query = new Query();
@@ -61,7 +64,24 @@ public class PersonService {
         mongoTemplate.findAndModify(query, update, Person.class);
         //mongoTemplate.updateFirst(query, update, Person.class);
   
-
         return personRepository.findByUsername("newuser2");
+    }
+
+    //delete document by username
+    public void delDoc(){
+        personRepository.deleteByUsername("newuser420");
+    }
+
+    //update docuemnt by username
+    public Optional<Person> change(){
+        Query query = new Query();
+        query.addCriteria(Criteria.where("username").is("newuser69"));
+        
+        Update update = new Update();
+        update.set("username", "newusername420");
+        
+        mongoTemplate.findAndModify(query, update, Person.class);
+
+        return personRepository.findByUsername("newusername420");
     }
 }

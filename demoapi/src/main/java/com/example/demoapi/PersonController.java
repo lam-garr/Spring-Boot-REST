@@ -42,4 +42,15 @@ public class PersonController {
     public ResponseEntity<Optional<Person>> editStuff(){
         return new ResponseEntity<Optional<Person>>(personService.editStuff(), HttpStatus.OK);
     }
+
+    @GetMapping(path = "/del")
+    public void delOne(){
+        personService.delDoc();
+        return;
+    }
+
+    @GetMapping(path = "/change")
+    public ResponseEntity<Optional<Person>> change(){
+        return new ResponseEntity<Optional<Person>>(personService.change(), HttpStatus.OK);
+    }
 }

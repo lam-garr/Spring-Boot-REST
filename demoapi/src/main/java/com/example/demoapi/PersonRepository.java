@@ -12,4 +12,6 @@ public interface PersonRepository extends MongoRepository<Person, ObjectId>{
     
     //@Query(value = "{'username' : ?0}", fields = "{'password' : 0, 'id' : 0}")
     Optional<Person> findByUsername(String username);
+
+    void deleteByUsername(String username);
 }
