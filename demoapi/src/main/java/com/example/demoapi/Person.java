@@ -20,6 +20,8 @@ public class Person {
     private ObjectId id;
     private String username;
     private String password;
+    private List<String> myArray;
+    private List<Person> myList;
 
     public Person(String username, String password){
         this.username = username;

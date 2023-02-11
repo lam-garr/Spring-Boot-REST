@@ -17,13 +17,18 @@ public class PersonController {
     @Autowired
     private PersonService personService;
 
-    @GetMapping("/all")
+    @GetMapping(path = "/all")
     public ResponseEntity<List<Person>> getAllPersons(){
         return new ResponseEntity<List<Person>>(personService.getAllPersons(), HttpStatus.OK);
     }
 
-    @GetMapping("/one")
+    @GetMapping(path = "/one")
     public ResponseEntity<Optional<Person>> getByUsername(){
-        return new ResponseEntity<>(personService.getByUsername(), HttpStatus.OK);
+        return new ResponseEntity<Optional<Person>>(personService.getByUsername(), HttpStatus.OK);
+    }
+
+    @GetMapping(path = "/stuff")
+    public ResponseEntity<String> doStuff(){
+        return new ResponseEntity<String>(personService.doStuff(), HttpStatus.OK);
     }
 }
