@@ -33,8 +33,13 @@ public class PersonController {
         return new ResponseEntity<String>(personService.doStuff(), HttpStatus.OK);
     }
 
-    @GetMapping(path = "/delte")
+    @GetMapping(path = "/delete")
     public ResponseEntity<Optional<Person>> deleteStuff(){
         return new ResponseEntity<Optional<Person>>(personService.deleteStuff(), HttpStatus.OK);
+    }
+
+    @GetMapping(path = "/edit")
+    public ResponseEntity<Optional<Person>> editStuff(){
+        return new ResponseEntity<Optional<Person>>(personService.editStuff(), HttpStatus.OK);
     }
 }
